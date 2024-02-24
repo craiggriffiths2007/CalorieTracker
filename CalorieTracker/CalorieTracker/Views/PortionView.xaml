@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalorieTracker.PortionView"
+             xmlns:controls="clr-namespace:SmartControls"
+             Title="Food Portion">
+    <ContentPage.Content >
+        <StackLayout VerticalOptions="Start" Padding="3">
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <controls:DateLabel x:Name="portion_date" TheDate="{Binding Date}" LabelText="Date :" HorizontalOptions="Start"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <controls:TimeLabel x:Name="portion_time" TheTime="{Binding Time}" LabelText="Time :" HorizontalOptions="Start"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Grid HeightRequest="10"></Grid>
+            
+            <StackLayout Orientation="Horizontal" WidthRequest="300">
+                <Label Text="Calories" WidthRequest="150"/>
+                <Grid WidthRequest="20"/>
+                <Entry x:Name="cals" HorizontalTextAlignment="End" Keyboard="Numeric" Text="{Binding Calories}"/>
+                <Grid WidthRequest="20"/>
+                <Label Text="kCal" />
+            </StackLayout>
+            
+            <Grid HeightRequest="10"></Grid>
+            
+            <Label Text="Description"/>
+            <Entry Text="{Binding Desc}" Placeholder="Product Description"/>
+
+            <Grid HeightRequest="20"></Grid>
+            <Button x:Name="photo_button" Text="Take a picture" Clicked="OnPhotoClicked" HorizontalOptions="Center" WidthRequest="300"/>
+
+            <StackLayout Padding="8">
+                <Image x:Name="Picture" Aspect="AspectFit" HeightRequest="400" WidthRequest="400" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                <Button Text="Delete" Clicked="OnDeleteClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Save" Command="{Binding SavePortionCommand}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
